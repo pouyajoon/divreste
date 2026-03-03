@@ -11,7 +11,7 @@ Usage:
   divreste [options] [output]
 
 Options:
-  -n, --count N      Nombre de divisions (défaut: 20)
+  -n, --count N      Nombre de divisions (défaut: 30)
   -d, --divisors A-B Diviseurs min-max (défaut: 2-10)
   -o, --output DIR   Dossier de sortie (défaut: .)
   --md               Générer .md
@@ -21,7 +21,7 @@ Options:
   -h, --help         Afficher l'aide
 
 Exemples:
-  divreste             → génère feuille-divisions-reste.pdf (20 divisions, gros format)
+  divreste             → génère feuille-divisions-reste.pdf (30 divisions par page)
   divreste -n 20 --all
   divreste -d 2-10 --pdf
 `;
@@ -39,7 +39,7 @@ function parseArgs(): { options: GeneratorOptions; outputDir: string; formats: (
       process.exit(0);
     }
     if (a === "-n" || a === "--count") {
-      options.count = parseInt(args[++i] ?? "20", 10);
+      options.count = parseInt(args[++i] ?? "30", 10);
       continue;
     }
     if (a === "-d" || a === "--divisors") {
@@ -90,7 +90,7 @@ async function main() {
     await page.pdf({
       path: `${base}.pdf`,
       format: "A4",
-      margin: { top: "12mm", right: "12mm", bottom: "12mm", left: "12mm" },
+      margin: { top: "8mm", right: "12mm", bottom: "12mm", left: "12mm" },
     });
     await browser.close();
     console.log(`Écrit: ${base}.pdf`);

@@ -17,7 +17,7 @@ export interface GeneratorOptions {
 }
 
 const DEFAULT_OPTIONS: Required<GeneratorOptions> = {
-  count: 20,
+  count: 30,
   divisorRange: [2, 10],
   dividendMax: 99,
   tabsBeforeAnswer: 5,
@@ -74,7 +74,7 @@ export function generateMarkdown(options: GeneratorOptions = {}): string {
   return "```\n" + lines.join("\n") + "\n```\n";
 }
 
-/** Génère le contenu HTML (20 divisions, gros format) */
+/** Génère le contenu HTML (30 divisions par page) */
 export function generateHTML(options: GeneratorOptions = {}): string {
   const opts = { ...DEFAULT_OPTIONS, ...options };
   const problems = generateDivisions(opts);
@@ -85,12 +85,12 @@ export function generateHTML(options: GeneratorOptions = {}): string {
   <meta charset="UTF-8">
   <title>Feuille de divisions</title>
   <style>
-    @page { size: A4; margin: 12mm; }
+    @page { size: A4; margin-top: 8mm; margin-right: 12mm; margin-bottom: 12mm; margin-left: 12mm; }
     body {
       font-family: "SF Mono", "Consolas", monospace;
-      font-size: 14pt;
-      line-height: 2;
-      margin: 12mm;
+      font-size: 12pt;
+      line-height: 1.85;
+      margin: 8mm 12mm 12mm 12mm;
       white-space: pre;
       max-width: 100%;
     }
