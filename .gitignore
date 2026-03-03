@@ -1,0 +1,15 @@
+node_modules/
+dist/
+*.tmp.md
+
+# Fichiers générés
+feuille-divisions-reste.md
+feuille-divisions-reste.html
+feuille-divisions-reste.pdf
+
+# Système
+.DS_Store
+
+# Env
+.env
+.env.*
